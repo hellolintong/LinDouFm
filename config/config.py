@@ -21,7 +21,7 @@ DOUBAN_USER_PASSWORD = '7MRrbGozZkrx'
 # oatuh
 APP_ID = 'doufm_appid'
 APP_SECRET = 'c2cc7f9542e61b7e61d7'
-REDIRECT_URL = 'http://doufm.info/api/oauth/access/'
+REDIRECT_URL = 'http://doufm.info:5000/api/oauth/access/'
 SERVER_URL = 'http://rs.xidian.edu.cn/'
 GET_REQUEST_URL = SERVER_URL + 'appauth.php?ac=getRequest_token&app_id=%s&app_secret=%s'
 GET_ACCESS_URL = SERVER_URL + 'appauth.php?ac=getAccess_token&request_token=%s&app_id=%s&app_secret=%s'
