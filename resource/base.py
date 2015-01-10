@@ -89,4 +89,4 @@ def administrator_check(session):
     if 'administrator' in session and session['administrator'] == ADMIN_NAME:
         return True
     return False
-    """
+"""

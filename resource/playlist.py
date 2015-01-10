@@ -32,4 +32,3 @@ class PlaylistResource(Resource):
         num = args['num']
         channel = get_channel(key=key)[0]
         return marshal(get_music_by_channel(channel, num), music_fields)
-

@@ -69,5 +69,4 @@ class MusicResource(Resource):
     def delete(self, key):
         music = get_music(key=key)[0]
         delete_music(music)
-
 """

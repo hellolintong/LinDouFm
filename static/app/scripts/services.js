@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /**
  *
  * 因为调用地址和调用参数需要在使用的时候指定，所以作为对象的成员变量，而整个http通信过程可以做成一个统一的函数，所以写成了原型的函数
@@ -147,3 +148,57 @@ fmApp.factory("MusicService", function ($http) {
     return musicObj;
 });
 
+=======
+
+/*
+*	user services
+*/
+fmApp.factory('User', ['$resource', 
+	function($resource) {
+		return $resource('/api/user/:arg',
+			{arg: '@arg'},
+			{
+				query: {method: 'get', isArray: true},
+			 	login: {method: 'post', isArray: false}
+			 	// register: {method: 'post', isArray: false}
+			}
+		);
+	}
+]);
+
+/*
+*	music services
+*/
+fmApp.factory('Music', ['$resource', 
+	function($resource) {
+		return $resource('/api/music/', 
+			{},
+			{query: {method: 'get', isArray: true}
+		});
+	}
+]);
+
+/*
+*	music services
+*/
+fmApp.factory('MusicList', ['$resource', 
+	function($resource) {
+		return $resource('/api/playlist/:arg', 
+			{arg: '@arg'},
+			{query: {method: 'get', isArray: true }
+		});
+	}
+]);
+
+/*
+*	channel services
+*/
+fmApp.factory('Channel', ['$resource', 
+	function($resource) {
+		return $resource('/api/channel/', 
+			{},
+			{query: {method: 'get', isArray: true}
+		});
+	}
+]);
+>>>>>>> origin/master

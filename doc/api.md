@@ -2,7 +2,6 @@
 
 请调用本API的所有app将自己的`User-Agent`设置为`应用名:版本号:联系方式`的形式，例如`MyApp:0.1:admin@doufm.info`，方便进行管理。
 
-
 # API 文档
 ## Web 端:  登录API
 
@@ -41,7 +40,6 @@
 ### URL: `/api/music/`
 
 * Method `GET`: 搜索歌曲
-
     * Arguments: 
         * `key`: 歌曲key
         * `title`: 歌曲名
@@ -142,6 +140,7 @@
         * `listened`:用户听过的歌曲数量
 
 ---
+
 ### URL: `/api/user/history/`
 
 * Method `GET`: 获取用户操作历史记录, 要求:用户用户必须登录，否则返回None
@@ -165,6 +164,7 @@
         * `status`:操作成功则返回`success`
 
 ---
+
 ### URL: `/api/user/music/`
 
 * Method `GET`: 获取用户相关的歌曲列表。要求:用户用户必须登录，否则返回None
@@ -186,6 +186,7 @@
         * `audio`: 音频URL
 
 ---
+
 ## playlist API
 
 ### URL: `/api/playlist/`

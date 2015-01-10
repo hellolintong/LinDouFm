@@ -86,7 +86,6 @@ def disable_channel(uuid):
     update_channel(channel, playable=False)
 
 
-
 @manager.command
 def music(uuid=None):
     if not uuid:
