@@ -22,7 +22,7 @@ fmApp.controller("FMCtrl", function FMCtrl($scope, PlayListService, ActivePlayLi
             },
             getCurList: function(){
                 if(this.index < 0){
-                    alert("第22行出现bug");
+                    //alert("第22行出现bug");
                 }
                 return this.playList[this.index];
             },
@@ -33,7 +33,7 @@ fmApp.controller("FMCtrl", function FMCtrl($scope, PlayListService, ActivePlayLi
                         return;
                     }
                 }
-                alert("第33行出现bug");
+                //alert("第33行出现bug");
             },
             isNormalList: function(){
                 return this.index >= 0;
@@ -64,11 +64,17 @@ fmApp.controller("FMCtrl", function FMCtrl($scope, PlayListService, ActivePlayLi
             //设置喜欢的音乐
             setFavorMusics: function(data){
                 this.favorMusics = data;
+		if(this.favorMusics === "null\n"){
+			this.favorMusics = new Array();
+		}
             },
 
             //设置听过的音乐
             setListenedMusics: function(data){
-                this.listenedMusics = data;
+               	this.listenedMusics = data;
+		if(this.listenedMusics === "null\n"){
+			this.listenedMusics = new Array();
+		}
             },
 
             setIndexByKey: function(key){
@@ -225,6 +231,8 @@ fmApp.controller("FMCtrl", function FMCtrl($scope, PlayListService, ActivePlayLi
 
             var currentUrl = window.location.host;
             $scope.shareMsg = '很好听的一首歌，快来听吧!<br />' + musicObj.artist + '--' + musicObj.title + "<br />http://" + currentUrl + '/#key=' + musicObj.key;
+            var musicKey = musicObj.audio.substr(0, musicObj.audio.length-1)
+            $scope.shareMsg += "<hr />音乐文件链接：http://doufm.info" + musicKey + ".mp3";
             $('#shareMsg').html($scope.shareMsg);
             $("#jquery_jplayer_1").jPlayer("setMedia", {mp3: musicObj.audio}).jPlayer("load").jPlayer("play");
             $("#jp-cover img").attr("src", musicObj.cover);
@@ -238,13 +246,17 @@ fmApp.controller("FMCtrl", function FMCtrl($scope, PlayListService, ActivePlayLi
             UserMusicService.get(
                 function (data, status, headers, config) {
                         if(type == "favor"){
-                            MusicsObj.setFavorMusics(data);
+                            if(data !== "null\n"){
+	                            MusicsObj.setFavorMusics(data);
+			    }
                             if(playFlag){
                                 PlayerObj.playFavor();
                             }
                         }
                         else if (type = "listened"){
-                            MusicsObj.setListenedMusics(data);
+			   if(data !== "null\n"){
+                                   MusicsObj.setListenedMusics(data);
+			    }
                             if(playFlag){
                                 PlayerObj.playListened();
                             }
